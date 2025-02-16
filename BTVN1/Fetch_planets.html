@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch planets</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        #planet-container {
+            margin-top: 20px;
+        }
+        img {
+            width: 300px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1> Destination</h1>
+    <button onclick="fetchPlanet()">Hiển thị hành tinh ngẫu nhiên</button>
+    <div id="planet-container">
+        <h2 id="planet-name">Nhấn nút để hiển thị hành tinh</h2>
+        <img id="planet-image" src="" alt="Hình ảnh hành tinh" hidden> 
+    </div>
+    <script>
+        window.addEventListener("load", function() {
+            function fetchPlanet() {
+                fetch("https://handlers.education.launchcode.org/static/planets.json")
+                    .then(response => response.json())
+                    .then(planets => {
+                        let randomPlanet = planets[Math.floor(Math.random() * planets.length)];
+                        document.getElementById("planet-name").textContent = randomPlanet.name;
+
+                        let imgElement = document.getElementById("planet-image");
+                        imgElement.src = randomPlanet.image;
+                        imgElement.hidden = false;
+                        console.log("Hành tinh:", randomPlanet.name);
+                        console.log("URL ảnh:", randomPlanet.image);
+                    })
+                    .catch(error => console.error("Lỗi khi tải dữ liệu:", error));
+            }
+
+            document.querySelector("button").addEventListener("click", fetchPlanet);
+        });
+        
+    </script>
+    <div id="destination">
+        <h3>Planets</h3>
+    </div>
+    
+</body>
+</html>
