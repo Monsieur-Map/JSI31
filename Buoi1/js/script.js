@@ -63,6 +63,6 @@ const countTrue_filter = (arr) => {
     const countTrue = arr.filter(
         (item) => String(item) === 'true' && typeof item === 'boolean'
 
-    );
+    ); //return a list
     return countTrue.length;
 };
