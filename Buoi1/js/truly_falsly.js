@@ -71,9 +71,9 @@ console.log(Array.isArray({})); // -> true
 console.log(true && true && 1); //Vì từ đầu đến cuối không có giá trị true nào hết thì console.log sẽ lấy giá trị true cuối cùng
 console.log("" && true && []); // còn lúc dò soát thì có 2 giá trị false là chuỗi rộng và '[]' thì console.log sẽ lấy giá trị false đầu tiên rất khác so với true
 
-// or (hoặc) '||': trả về giá trị true gần nhất
-// => nếu không có false trong biểu thức => trả về giá trị false cuối cùng
-console.log(true || null || undefined); //true (xét được cái đầu true thù lấy cái true luôn)
+// or (hoặc) '||nhất
+// => nếu không có true trong biểu thức => trả': trả về giá trị true gần  về giá trị false cuối cùng
+console.log(0 || null || undefined); //true (xét được cái đầu true thù lấy cái true luôn)
 console.log(null || 0 || "1"); // "1"
 
 
